@@ -168,8 +168,6 @@
 <li><strong>安全防护</strong>：过滤恶意请求，降低直接攻击风险。</li>
 </ul>
 <h3 id="二、正向代理（Forward-Proxy）"><a href="#二、正向代理（Forward-Proxy）" class="headerlink" title="二、正向代理（Forward Proxy）"></a>二、正向代理（Forward Proxy）</h3><p><strong>定义</strong>：<strong>代表客户端向服务器发送请求</strong>的代理服务器。客户端明确配置使用正向代理，代理服务器根据请求转发至目标服务器，再将响应返回给客户端，俗称“梯子”。</p>
-<p><strong>示意图：</strong></p>
-<p><img src="C:\Users\73515\AppData\Roaming\Typora\typora-user-images\image-20250423171358206.png" alt="image-20250423171358206"></p>
 <p><strong>典型场景</strong>：</p>
 <ul>
 <li><strong>访问国外网站</strong>：用户通过正向代理突破地域限制（如使用 VPN 访问 YouTube）。</li>
@@ -188,8 +186,6 @@
 <li><strong>适用于客户端侧需求</strong>：如个人用户突破网络限制、企业统一出口管理。</li>
 </ul>
 <h3 id="三、反向代理"><a href="#三、反向代理" class="headerlink" title="三、反向代理"></a>三、反向代理</h3><p><strong>定义</strong>：<strong>代表服务器接收客户端请求</strong>的代理服务器。客户端无需知道真实服务器地址，代理服务器根据规则将请求转发至后端多个真实服务器，并将响应返回给客户端。</p>
-<p>示意图：</p>
-<p><img src="C:\Users\73515\AppData\Roaming\Typora\typora-user-images\image-20250423171517277.png" alt="image-20250423171517277"></p>
 <p><strong>典型场景</strong>：</p>
 <ul>
 <li><strong>负载均衡</strong>：将请求分发到多个后端服务器，避免单点压力过大（如 Nginx 代理 Web 服务器集群）。</li>
@@ -246,7 +242,8 @@
 <td>Nginx、Apache、HAProxy</td>
 </tr>
 </tbody></table>
-<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><ul>
+<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><p><img src="C:\Users\73515\adaliu\source\img\代理.png"></p>
+<ul>
 <li><strong>正向代理</strong>是 “客户端的盾牌”，帮助客户端突破限制并隐藏自身；</li>
 <li><strong>反向代理</strong>是 “服务器的屏障”，保护服务器并优化服务能力；</li>
 </ul>
