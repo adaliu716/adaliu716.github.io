@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="zh-CN, en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户 | Cyber Security Space</title><meta name="author" content="Ada Liu"><meta name="copyright" content="Ada Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户近日，网络安全公司 Volexity 监测发现，俄罗斯威胁行为者正滥用合法 OAuth 2.0 身份验证流程，针对乌克兰及人权组织相关人员的微软 365 账户实施劫持攻击。这种攻击利用用户对正规认证流程的信任，隐蔽性极强。 一、攻击活动的延续性自 3 月初起，Volexity 持续追踪到此类恶意活动。事实上，早在 2 月，Volexity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户">
+<meta property="og:url" content="https://www.cybersheild.pro/2025/04/27/%E9%BB%91%E5%AE%A2%E6%BB%A5%E7%94%A8%20OAuth%202.0%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8A%AB%E6%8C%81%E5%BE%AE%E8%BD%AF%20365%20%E8%B4%A6%E6%88%B7/index.html">
+<meta property="og:site_name" content="Cyber Security Space">
+<meta property="og:description" content="黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户近日，网络安全公司 Volexity 监测发现，俄罗斯威胁行为者正滥用合法 OAuth 2.0 身份验证流程，针对乌克兰及人权组织相关人员的微软 365 账户实施劫持攻击。这种攻击利用用户对正规认证流程的信任，隐蔽性极强。 一、攻击活动的延续性自 3 月初起，Volexity 持续追踪到此类恶意活动。事实上，早在 2 月，Volexity">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.cybersheild.pro/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-04-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-26T16:00:00.000Z">
+<meta property="article:author" content="Ada Liu">
+<meta property="article:tag" content="身份认证">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.cybersheild.pro/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户",
+  "url": "https://www.cybersheild.pro/2025/04/27/%E9%BB%91%E5%AE%A2%E6%BB%A5%E7%94%A8%20OAuth%202.0%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8A%AB%E6%8C%81%E5%BE%AE%E8%BD%AF%20365%20%E8%B4%A6%E6%88%B7/",
+  "image": "https://www.cybersheild.pro/img/butterfly-icon.png",
+  "datePublished": "2025-04-26T16:00:00.000Z",
+  "dateModified": "2025-04-26T16:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Ada Liu",
+      "url": "https://www.cybersheild.pro/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.cybersheild.pro/2025/04/27/%E9%BB%91%E5%AE%A2%E6%BB%A5%E7%94%A8%20OAuth%202.0%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8A%AB%E6%8C%81%E5%BE%AE%E8%BD%AF%20365%20%E8%B4%A6%E6%88%B7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Cyber Security Space</span></a><a class="nav-page-title" href="/"><span class="site-name">黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-04-26T16:00:00.000Z" title="Created 2025-04-27 00:00:00">2025-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-04-26T16:00:00.000Z" title="Updated 2025-04-27 00:00:00">2025-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AAA/">AAA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="黑客滥用-OAuth-2-0-工作流程劫持微软-365-账户"><a href="#黑客滥用-OAuth-2-0-工作流程劫持微软-365-账户" class="headerlink" title="黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户"></a>黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户</h1><p>近日，网络安全公司 Volexity 监测发现，俄罗斯威胁行为者正滥用合法 OAuth 2.0 身份验证流程，针对乌克兰及人权组织相关人员的微软 365 账户实施劫持攻击。这种攻击利用用户对正规认证流程的信任，隐蔽性极强。</p>
+<h3 id="一、攻击活动的延续性"><a href="#一、攻击活动的延续性" class="headerlink" title="一、攻击活动的延续性"></a>一、攻击活动的延续性</h3><p>自 3 月初起，Volexity 持续追踪到此类恶意活动。事实上，早在 2 月，Volexity 与微软已披露过类似攻击 —— 当时攻击者利用设备代码身份验证钓鱼手段窃取微软 365 账户。此次攻击的威胁行为者被分别标记为 UTA 0352 和 UTA 0355，Volexity 有中等把握判断其来自俄罗斯。</p>
+<h3 id="二、攻击手法解析"><a href="#二、攻击手法解析" class="headerlink" title="二、攻击手法解析"></a>二、攻击手法解析</h3><p>（一）伪装身份渗透通信渠道</p>
+<p>攻击者主要通过 WhatsApp、Signal 等即时通讯平台发起攻击，伪装成欧洲政要或乌克兰外交官，以 “邀请参加私人视频会议讨论乌克兰事务” 为诱饵，甚至使用已入侵的乌克兰政府账户进行通信，降低目标警惕性。</p>
+<p>（二）钓鱼链接诱导身份验证</p>
+<p>一旦建立联系，攻击者会发送精心构造的 OAuth 钓鱼链接，谎称是 “加入会议的必要步骤”。例如，UTA 0352 会通过 PDF 文件附带恶意链接，引导用户登录微软及依赖微软 365 OAuth 流程的第三方应用。</p>
+<p>（三）社会工程学骗取授权码</p>
+<p>当用户点击链接进行身份验证后，会被重定向至 insiders.vscode.dev 托管的 Visual Studio Code 浏览器版本页面。攻击者利用对话框诱导用户返回显示的代码，声称 “这是会议准入码”，而实际上该代码是有效期 60 天的 OAuth 授权码，可用于获取用户所有资源的访问令牌。研究人员指出，Visual Studio Code 的界面设计便于攻击者提取代码，若使用其他页面可能仅显示空白。 </p>
+<h3 id="三、攻击变种与长期控制"><a href="#三、攻击变种与长期控制" class="headerlink" title="三、攻击变种与长期控制"></a>三、攻击变种与长期控制</h3><p>早期攻击采用 Azure AD v1.0 格式，当前攻击升级为 v2.0，主要差异体现在 URL 参数。4 月披露的 UTA 0355 攻击中，攻击者利用入侵的乌克兰政府邮箱发起通信，并通过窃取的授权码在受害者 Microsoft Entra ID（原 Azure AD）中注册新设备。为绕过双因素认证（2FA），攻击者谎称 “2FA 代码是访问会议相关 SharePoint 的必要条件”，一旦用户批准，攻击者即可长期控制账户并访问邮件数据。</p>
+<h3 id="四、防御建议"><a href="#四、防御建议" class="headerlink" title="四、防御建议"></a>四、防御建议</h3><ol>
+<li><strong>针对性流量拦截</strong>：对使用 Visual Studio Code 客户端 ID 的登录行为设置警报，禁止访问 “insiders.vscode.dev” 和 “<a target="_blank" rel="noopener" href="https://vscode-redirect.azurewebsites.net/">vscode-redirect.azurewebsites.net</a>”。</li>
+<li><strong>条件访问策略</strong>：通过微软 Azure AD 条件访问功能，将账户访问限制在企业认证设备范围内。</li>
+<li>强化安全意识<strong>：培训员工警惕 “外交人员”“紧急会议” 等钓鱼话术，避免向陌生链接泄露任何代码或凭证。</strong></li>
+<li>OAuth 流程审计**：定期审查 OAuth 应用权限，删除不必要的第三方应用授权，确保身份验证日志可追溯。</li>
+</ol>
+<p>此次攻击揭示了攻击者对合法认证机制的滥用趋势，企业需结合技术防御与人员培训，构建多层级防护体系，避免成为供应链攻击的受害者。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://www.cybersheild.pro">Ada Liu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://www.cybersheild.pro/2025/04/27/%E9%BB%91%E5%AE%A2%E6%BB%A5%E7%94%A8%20OAuth%202.0%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8A%AB%E6%8C%81%E5%BE%AE%E8%BD%AF%20365%20%E8%B4%A6%E6%88%B7/">https://www.cybersheild.pro/2025/04/27/%E9%BB%91%E5%AE%A2%E6%BB%A5%E7%94%A8%20OAuth%202.0%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8A%AB%E6%8C%81%E5%BE%AE%E8%BD%AF%20365%20%E8%B4%A6%E6%88%B7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/">身份认证</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/04/26/%E5%91%98%E5%B7%A5%E7%9B%91%E6%8E%A7%E5%BA%94%E7%94%A8%E6%83%8A%E7%8E%B0%E7%99%BE%E4%B8%87%E6%88%AA%E5%9B%BE%E6%B3%84%E9%9C%B2%EF%BC%9A%E8%BF%9C%E7%A8%8B%E5%8A%9E%E5%85%AC%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%86%8D%E4%BA%AE%E7%BA%A2%E7%81%AF/" title="员工监控应用惊现百万截图泄露：远程办公数据安全再亮红灯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">员工监控应用惊现百万截图泄露：远程办公数据安全再亮红灯</div></div><div class="info-2"><div class="info-item-1">员工监控应用惊现百万截图泄露：远程办公数据安全再亮红灯一、2100 万张截图如何 “裸奔” 在互联网？近日安全研究机构曝光，员工生产力管理软件 WorkComposer 因云存储配置漏洞，导致超过 2100 万张员工工作截图在互联网上暴露长达数周。这些截图以每 20 秒一次的频率自动抓取，覆盖全球 20 万活跃用户，从纽约金融从业者的交易报表到东京工程师的代码界面，大量敏感画面正面临 “明码标价” 的风险。 二、未上锁的 “数据仓库”：漏洞细节曝光问题的核心在于一个未设置访问权限的亚马逊 S3 存储桶。该安全团队回忆时提到：“我们在常规监测中偶然定位到这个公开存储桶，目录里整齐排列着以企业 ID 命名的文件夹，每个文件夹下是数十万张截图。更令人惊讶的是，当我们通过官方渠道连续三次发送漏洞预警邮件，整整 12 天才收到第一次回复。” 直到计算机应急响应小组（CERT）介入协调，WorkComposer 才在 48 小时内紧急锁定存储桶，但此时泄露数据已可能流入地下黑产市场。 三、截图里的 “透明办公室”：隐私风险有多深？在已分析的样本中，约 37%...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Ada Liu</div><div class="author-info-description">为网络安全建设添砖加瓦</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/adaliu716"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/adaliu716" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:735154560@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content"><div style="text-align: center;">
+<p>合作交流请联系</p>
+<img src="/img/contactme.jpg"
+     style="max-width: 180px; width: 100%; height: auto; border: 1px solid #eee;"
+     alt="微信二维码">
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%91%E5%AE%A2%E6%BB%A5%E7%94%A8-OAuth-2-0-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8A%AB%E6%8C%81%E5%BE%AE%E8%BD%AF-365-%E8%B4%A6%E6%88%B7"><span class="toc-number">1.</span> <span class="toc-text">黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8%E7%9A%84%E5%BB%B6%E7%BB%AD%E6%80%A7"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、攻击活动的延续性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E8%A7%A3%E6%9E%90"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、攻击手法解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%94%BB%E5%87%BB%E5%8F%98%E7%A7%8D%E4%B8%8E%E9%95%BF%E6%9C%9F%E6%8E%A7%E5%88%B6"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、攻击变种与长期控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%98%B2%E5%BE%A1%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.0.4.</span> <span class="toc-text">四、防御建议</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/27/%E9%BB%91%E5%AE%A2%E6%BB%A5%E7%94%A8%20OAuth%202.0%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8A%AB%E6%8C%81%E5%BE%AE%E8%BD%AF%20365%20%E8%B4%A6%E6%88%B7/" title="黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户">黑客滥用 OAuth 2.0 工作流程劫持微软 365 账户</a><time datetime="2025-04-26T16:00:00.000Z" title="Created 2025-04-27 00:00:00">2025-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/26/%E5%91%98%E5%B7%A5%E7%9B%91%E6%8E%A7%E5%BA%94%E7%94%A8%E6%83%8A%E7%8E%B0%E7%99%BE%E4%B8%87%E6%88%AA%E5%9B%BE%E6%B3%84%E9%9C%B2%EF%BC%9A%E8%BF%9C%E7%A8%8B%E5%8A%9E%E5%85%AC%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%86%8D%E4%BA%AE%E7%BA%A2%E7%81%AF/" title="员工监控应用惊现百万截图泄露：远程办公数据安全再亮红灯">员工监控应用惊现百万截图泄露：远程办公数据安全再亮红灯</a><time datetime="2025-04-25T16:00:00.000Z" title="Created 2025-04-26 00:00:00">2025-04-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/25/%E8%AD%A6%E6%83%95%E6%96%B0%E5%9E%8B%E5%AE%89%E5%8D%93%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%EF%BC%9A%E4%B8%80%E8%A7%A6%E5%8D%B3%E7%9B%97%E7%9A%84%20%E2%80%9CSuperCard%20X%E2%80%9D/" title="警惕新型安卓恶意软件：一触即盗的 “SuperCard X”">警惕新型安卓恶意软件：一触即盗的 “SuperCard X”</a><time datetime="2025-04-24T16:00:00.000Z" title="Created 2025-04-25 00:00:00">2025-04-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/24/AD%20%E5%9F%9F%E5%AE%89%E5%85%A8%E8%AF%84%E4%BC%B0%E5%85%A8%E6%94%BB%E7%95%A5%EF%BC%9A%E7%BB%99%E4%BC%81%E4%B8%9A%E7%BD%91%E7%BB%9C%E5%81%9A%E4%B8%80%E6%AC%A1%20%E2%80%9C%E6%B7%B1%E5%BA%A6%E4%BD%93%E6%A3%80%E2%80%9D/" title="AD 域安全评估全攻略：给企业网络做一次 “深度体检”">AD 域安全评估全攻略：给企业网络做一次 “深度体检”</a><time datetime="2025-04-23T16:00:00.000Z" title="Created 2025-04-24 00:00:00">2025-04-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/24/%EF%BF%BD%20%1Cchaos%1D%200%20%1Corder%1D%1AAD%20%DF%82U%EF%BF%BD%01%1AQ%DC%A1%06%11)%2090%25%20%EF%BF%BDQ%1F/" title="从 “chaos” 到 “order”：AD 域如何让企业网络管理少踩 90% 的坑？">从 “chaos” 到 “order”：AD 域如何让企业网络管理少踩 90% 的坑？</a><time datetime="2025-04-23T16:00:00.000Z" title="Created 2025-04-24 00:00:00">2025-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Ada Liu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="2760539550" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
