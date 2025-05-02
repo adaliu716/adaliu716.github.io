@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="zh-CN, en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>探秘邮件安全：从技术原理到防护实践 | Cyber Security Space</title><meta name="author" content="Ada Liu"><meta name="copyright" content="Ada Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="探秘邮件安全：从技术原理到防护实践在数字化办公与信息传递高度发达的今天，电子邮件早已成为我们日常沟通和业务往来的必备工具。但与此同时，邮件欺骗、信息泄露等安全问题也层出不穷。为解决这些问题，一系列邮件安全技术逐渐被应用，它们相互配合，为邮件安全保驾护航。 一、验证发件人身份的三道防线 ——SPF、DKIM 和 DMARCSPF（发件人IP验证） Sender Policy Framework（SP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="探秘邮件安全：从技术原理到防护实践">
+<meta property="og:url" content="https://www.cybersheild.pro/2025/05/02/%E6%8E%A2%E7%A7%98%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%9A%E4%BB%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E5%88%B0%E9%98%B2%E6%8A%A4%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Cyber Security Space">
+<meta property="og:description" content="探秘邮件安全：从技术原理到防护实践在数字化办公与信息传递高度发达的今天，电子邮件早已成为我们日常沟通和业务往来的必备工具。但与此同时，邮件欺骗、信息泄露等安全问题也层出不穷。为解决这些问题，一系列邮件安全技术逐渐被应用，它们相互配合，为邮件安全保驾护航。 一、验证发件人身份的三道防线 ——SPF、DKIM 和 DMARCSPF（发件人IP验证） Sender Policy Framework（SP">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.cybersheild.pro/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-05-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-01T16:00:00.000Z">
+<meta property="article:author" content="Ada Liu">
+<meta property="article:tag" content="Email Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.cybersheild.pro/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "探秘邮件安全：从技术原理到防护实践",
+  "url": "https://www.cybersheild.pro/2025/05/02/%E6%8E%A2%E7%A7%98%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%9A%E4%BB%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E5%88%B0%E9%98%B2%E6%8A%A4%E5%AE%9E%E8%B7%B5/",
+  "image": "https://www.cybersheild.pro/img/butterfly-icon.png",
+  "datePublished": "2025-05-01T16:00:00.000Z",
+  "dateModified": "2025-05-01T16:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Ada Liu",
+      "url": "https://www.cybersheild.pro/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.cybersheild.pro/2025/05/02/%E6%8E%A2%E7%A7%98%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%9A%E4%BB%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E5%88%B0%E9%98%B2%E6%8A%A4%E5%AE%9E%E8%B7%B5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '探秘邮件安全：从技术原理到防护实践',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Cyber Security Space</span></a><a class="nav-page-title" href="/"><span class="site-name">探秘邮件安全：从技术原理到防护实践</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">探秘邮件安全：从技术原理到防护实践</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-01T16:00:00.000Z" title="Created 2025-05-02 00:00:00">2025-05-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-01T16:00:00.000Z" title="Updated 2025-05-02 00:00:00">2025-05-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Email-Security/">Email Security</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="探秘邮件安全：从技术原理到防护实践"><a href="#探秘邮件安全：从技术原理到防护实践" class="headerlink" title="探秘邮件安全：从技术原理到防护实践"></a>探秘邮件安全：从技术原理到防护实践</h1><p>在数字化办公与信息传递高度发达的今天，电子邮件早已成为我们日常沟通和业务往来的必备工具。但与此同时，邮件欺骗、信息泄露等安全问题也层出不穷。为解决这些问题，一系列邮件安全技术逐渐被应用，它们相互配合，为邮件安全保驾护航。</p>
+<h3 id="一、验证发件人身份的三道防线-——SPF、DKIM-和-DMARC"><a href="#一、验证发件人身份的三道防线-——SPF、DKIM-和-DMARC" class="headerlink" title="一、验证发件人身份的三道防线 ——SPF、DKIM 和 DMARC"></a>一、<strong>验证发件人身份的三道防线 ——SPF、DKIM 和 DMARC</strong></h3><p>SPF（发件人IP验证）</p>
+<p>Sender Policy Framework（SPF）的核心作用是验证发件人 IP 地址，防止电子邮件欺骗。具体来说，通过在 DNS 记录里设置 SPF 记录，能明确规定哪些 IP 地址有权代表特定域名发送邮件。接收邮件时，服务器会把发件人的 IP 地址与 SPF 记录对比，一旦发现不在授权范围内，就会对邮件的真实性打上问号，甚至直接拦截，从根源上避免域名被非法冒用发邮件的情况。</p>
+<p>DKIM（邮件的数字签名）</p>
+<p>DomainKeys Identified Mail（DKIM）会给电子邮件添加独特的数字签名，就像给邮件盖上专属印章。这个签名包含发件域名信息，接收服务器验证数字签名，既能确认邮件在传输中没被篡改，也能核实发件人身份，让邮件可信度大大提升。</p>
+<p>DMAR（邮件安全智能管理系统）</p>
+<p>Domain-based Message Authentication, Reporting and Conformance（DMARC）基于 SPF 和 DKIM 构建，它不仅能让接收方了解发件人对未经授权邮件的处理方式，还提供反馈功能。发件人通过 DMARC 报告，能清楚知道邮件在接收端的 “遭遇”，比如哪些因验证不通过被拒收、哪些被隔离，从而有针对性地优化邮件安全策略。</p>
+<h3 id="二、加密与身份验证：保障邮件内容安全的关键技术"><a href="#二、加密与身份验证：保障邮件内容安全的关键技术" class="headerlink" title="二、加密与身份验证：保障邮件内容安全的关键技术"></a>二、加密与身份验证：保障邮件内容安全的关键技术</h3><p><strong>PGP 密钥信任体系</strong></p>
+<p>PGP（Pretty Good Privacy）采用 RSA、IDEA、MD5 等加密算法进行身份验证，用信任网络的方式管理密钥。在 PGP 体系里，用户间靠相互信任确定密钥可信度，这种去中心化的管理模式，为邮件通信提供了灵活又安全的加密方式，确保邮件传输时不被他人窥探。</p>
+<p><strong>STARTLS 与 Implicit SMTPS 加密传输</strong></p>
+<p>STARTLS 和 Implicit SMTPS 都用于加密明文邮件，但运作方式有差异。STARTLS 更具兼容性，若邮件服务器支持 TLS 加密，就把明文邮件加密传输；不支持的话，邮件就以明文发送。Implicit SMTPS 则更严格，用于发送敏感数据，强制要求用 TLS 加密，服务器不支持加密就直接中断连接，保证邮件内容全程安全传输。</p>
+<p><strong>S&#x2F;MIME：基于证书的邮件安全方案</strong></p>
+<p>Secure&#x2F;Multipurpose Internet Mail Extensions（S&#x2F;MIME）依赖 CA 数字证书完成身份验证，主要有签名消息和安全信封两种消息类型。签名消息能防止发件人抵赖，安全信封则保证邮件内容只有收件人能查看。以 S&#x2F;MIME 的工作流程为例：</p>
+<p><strong>加密环节</strong></p>
+<p>发件人先用收件人的公钥加密邮件内容，保证只有收件人能解密查看。再用自己的私钥给邮件签名，证明邮件出自本人且未被篡改，最后将加密邮件和签名一同发出。</p>
+<p><strong>解密环节</strong></p>
+<p>收件人收到邮件后，用自己的私钥解密获取内容，再用发件人的公钥验证签名，确认邮件传输过程没被修改，同时核实发件人身份，保障邮件通信安全可靠。</p>
+<p>邮件安全涉及多方面技术，SPF、DKIM、DMARC、PGP、STARTLS、Implicit SMTPS 和 S&#x2F;MIME 等各司其职，从发件人身份核验到邮件内容加密，形成完整的安全防护体系。日常使用邮件时，了解这些技术原理并合理配置相关安全参数，能大大降低邮件安全风险，让邮件通信更安心。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://www.cybersheild.pro">Ada Liu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://www.cybersheild.pro/2025/05/02/%E6%8E%A2%E7%A7%98%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%9A%E4%BB%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E5%88%B0%E9%98%B2%E6%8A%A4%E5%AE%9E%E8%B7%B5/">https://www.cybersheild.pro/2025/05/02/%E6%8E%A2%E7%A7%98%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%9A%E4%BB%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E5%88%B0%E9%98%B2%E6%8A%A4%E5%AE%9E%E8%B7%B5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Email-Security/">Email Security</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/01/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%EF%BC%9A%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%BC%8F%E3%80%81%E5%AE%89%E5%85%A8%E6%A0%87%E5%87%86%E4%B8%8E%20WiFi%20%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/" title="无线网络：部署模式、安全标准与 WiFi 安全指南"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">无线网络：部署模式、安全标准与 WiFi 安全指南</div></div><div class="info-2"><div class="info-item-1">无线网络：部署模式、安全标准与 WiFi 安全指南在智能设备普及的今天，无线网络已成为生活和工作中不可或缺的连接方式。从家庭 WiFi 到企业办公网络，不同的部署模式和安全标准决定了网络的性能与安全性。而在日常使用 WiFi 的过程中，隐藏的安全隐患也不容小觑。本文我们将深入了解无线网络的部署模式、安全标准，并结合生活场景剖析 WiFi 安全问题，帮你判断 WiFi 安全性。 一、无线网络的部署模式 独立部署：设备间的直接对话​  独立部署模式下，设备与设备直接连接，无需无线接入点（WAP）中转。这种模式有：  AD-HOC：早期的 AD-HOC 采用 WEP 加密方式，但由于 WEP 加密机制存在漏洞，容易被破解，传输安全性较低，现已逐渐被淘汰 。在一些公共场所，不法分子可能利用 AD-HOC 模式搭建 “钓鱼 WiFi”，例如创建与咖啡店官方 WiFi 相似名称的网络，一旦用户连接，黑客就能通过网络监听获取用户的账号密码、支付信息等 。  WIFI-DIRECT：作为 AD-HOC 的 “升级版”，WIFI-DIRECT 支持 WAP2 和 WAP3...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Ada Liu</div><div class="author-info-description">为网络安全建设添砖加瓦</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">35</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/adaliu716"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/adaliu716" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:735154560@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content"><div style="text-align: center;">
+<p>合作交流请联系</p>
+<img src="/img/contactme.jpg"
+     style="max-width: 180px; width: 100%; height: auto; border: 1px solid #eee;"
+     alt="微信二维码">
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A2%E7%A7%98%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%9A%E4%BB%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E5%88%B0%E9%98%B2%E6%8A%A4%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.</span> <span class="toc-text">探秘邮件安全：从技术原理到防护实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%AA%8C%E8%AF%81%E5%8F%91%E4%BB%B6%E4%BA%BA%E8%BA%AB%E4%BB%BD%E7%9A%84%E4%B8%89%E9%81%93%E9%98%B2%E7%BA%BF-%E2%80%94%E2%80%94SPF%E3%80%81DKIM-%E5%92%8C-DMARC"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、验证发件人身份的三道防线 ——SPF、DKIM 和 DMARC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%9A%E4%BF%9D%E9%9A%9C%E9%82%AE%E4%BB%B6%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%9A%84%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、加密与身份验证：保障邮件内容安全的关键技术</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/02/%E6%8E%A2%E7%A7%98%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%9A%E4%BB%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E5%88%B0%E9%98%B2%E6%8A%A4%E5%AE%9E%E8%B7%B5/" title="探秘邮件安全：从技术原理到防护实践">探秘邮件安全：从技术原理到防护实践</a><time datetime="2025-05-01T16:00:00.000Z" title="Created 2025-05-02 00:00:00">2025-05-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/01/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%EF%BC%9A%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%BC%8F%E3%80%81%E5%AE%89%E5%85%A8%E6%A0%87%E5%87%86%E4%B8%8E%20WiFi%20%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/" title="无线网络：部署模式、安全标准与 WiFi 安全指南">无线网络：部署模式、安全标准与 WiFi 安全指南</a><time datetime="2025-04-30T16:00:00.000Z" title="Created 2025-05-01 00:00:00">2025-05-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/30/SAML%20%E4%B8%8E%20OIDC%EF%BC%9A%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%95%8C%E7%9A%84%20%E2%80%9C%E5%8F%8C%E5%AD%90%E6%98%9F%E2%80%9D%20%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/" title="深度剖析：OIDC 与 SAML 的全方位技术对决">深度剖析：OIDC 与 SAML 的全方位技术对决</a><time datetime="2025-04-29T16:00:00.000Z" title="Created 2025-04-30 00:00:00">2025-04-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/29/%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%9A%E5%8F%8C%E5%89%91%E5%90%88%E7%92%A7%E7%9A%84%E5%8A%A0%E5%AF%86%E8%89%BA%E6%9C%AF/" title="混合密码学：双剑合璧的加密艺术">混合密码学：双剑合璧的加密艺术</a><time datetime="2025-04-28T16:00:00.000Z" title="Created 2025-04-29 00:00:00">2025-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/28/SOCKS%E3%80%81%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86%E3%80%81%E9%9D%9E%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86/" title="SOCKS、透明代理、非透明代理">SOCKS、透明代理、非透明代理</a><time datetime="2025-04-27T16:00:00.000Z" title="Created 2025-04-28 00:00:00">2025-04-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Ada Liu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="2760539550" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
